@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Come Together</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous">
+        <style>
+            .TopNav {
+                grid-area: header;
+                display: inline;
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+
+            .all_the_info_i_need_to_track_for_this_view {
+                padding: 20px;
+                grid-area: parent_thing;
+                border-bottom: 2px solid #909090;
+                font-size: xx-large;
+                font-weight: bold;
+            }
+
+            .thing {
+                min-height: 600px;
+            }
+
+
+            .the_thing_on_the_left {
+                grid-area: left_thing;
+                border-right: 1px solid gray;
+
+            }
+
+            .the_thing_on_the_right {
+                grid-area: right_thing;
+                border-left: 1px solid gray;
+            }
+
+            .BottomNav {
+                grid-area: footer;
+                background-color: rgba(255, 255, 255, 0.8);
+            }
+
+            .grid_container {
+                text-align: center;
+                display: grid;
+                grid-template-areas: 'header header' 'parent_thing parent_thing' 'left_thing right_thing' 'footer footer';
+                grid-gap: 10px;
+                background-color: #2196F3;
+                padding: 10px;
+            }
+
+            .grid-container > div {
+
+                text-align: center;
+                padding: 20px 0;
+                font-size: 30px;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                display: inline;
+                color: #000000;
+                margin-left: 5px;
+                margin-right: 5px;
+                font-weight: bolder;
+            }
+
+            #the_whats_what {
+                font-size: smaller;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="grid_container">
+                <div class="TopNav">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+
+                <div class="all_the_info_i_need_to_track_for_this_view">
+                    <h1>Top of the world Ma!</h1>
+                    <div id="the_whats_what">
+                        Nothing to report atm
+                    </div>
+                </div>
+                <div class="thing the_thing_on_the_left"><p>To the left</p>
+                    <button type="button" class="btn btn-sm btn-block btn-primary" onclick="someone_clicked_something();">Yell</button>
+                    <button type="button" class="btn btn-sm btn-block btn-warning" onclick="someone_clicked_something();">Clap</button>
+                    <button type="button" class="btn btn-sm btn-block btn-secondary" onclick="someone_clicked_something();">Laugh</button>
+                </div>
+                <div class="thing the_thing_on_the_right"><p>To the right</p>
+                    <button type="button" class="btn btn-sm btn-block btn-primary" onclick="someone_clicked_something();">Yell</button>
+                    <button type="button" class="btn btn-sm btn-block btn-warning" onclick="someone_clicked_something();">Clap</button>
+                    <button type="button" class="btn btn-sm btn-block btn-secondary" onclick="someone_clicked_something();">Laugh</button>
+                </div>
+
+
+                <div class="BottomNav">
+                    Where the Wild Things Are
+                </div>
+            </div>
+        </div>
+        <script>
+            function someone_clicked_something(ev) {
+                // console.log(`made u click ${ev.target}`);
+                console.log(`made u click!`);
+                alert(`Seems you clicked something`);
+            }
+        </script>
+    </body>
+</html>

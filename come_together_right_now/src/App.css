@@ -1,0 +1,101 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+
+.TopNav {
+  grid-area: header;
+  display: inline;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.all_the_info_i_need_to_track_for_this_view {
+  padding: 20px;
+  grid-area: parent_thing;
+  border-bottom: 2px solid #909090;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+.thing {
+  min-height: 600px;
+}
+
+
+.the_thing_on_the_left {
+  grid-area: left_thing;
+  border-right: 1px solid gray;
+
+}
+
+.the_thing_on_the_right {
+  grid-area: right_thing;
+  border-left: 1px solid gray;
+}
+
+.BottomNav {
+  grid-area: footer;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.grid_container {
+  text-align: center;
+  display: grid;
+  grid-template-areas: 'header header' 'parent_thing parent_thing' 'left_thing right_thing' 'footer footer';
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+}
+
+.grid-container > div {
+
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  color: #000000;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-weight: bolder;
+}
+
+#the_whats_what {
+  font-size: smaller;
+}
+
+body {
+  background-color: #282c34;
+}
+
+form {
+  text-align: center;
+  margin-top: 10px;
+}

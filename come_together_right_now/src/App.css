@@ -99,3 +99,28 @@ form {
   text-align: center;
   margin-top: 10px;
 }
+
+.red_border {
+  border: red 2px solid;
+  padding: 5px;
+}
+
+.blue_border {
+  border: blue 2px solid;
+  padding: 5px;
+}
+
+.green_border {
+  border: green 2px solid;
+  padding: 5px;
+}
+
+.pink_border {
+  border: #ff9818 2px solid;
+  padding: 5px;
+}
+
+.purple_border {
+  border: purple 2px solid;
+  padding: 5px;
+}

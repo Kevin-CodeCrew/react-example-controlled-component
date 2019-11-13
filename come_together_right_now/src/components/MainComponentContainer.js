@@ -8,8 +8,6 @@ import Player from "./Player";
 // all child components.
 class MainComponentContainer extends Component
 {
-    DEBUG = false; // Simple flag to toggle debug messages in console. Should really pass down as a prop to child components
-
     constructor(props)
     {
         super(props);
@@ -19,7 +17,8 @@ class MainComponentContainer extends Component
             the_name_of_the_game: "Top of the World Ma!",
             player_one_name: "Left Player",
             player_two_name: "Right Player",
-            last_player_move: "Waiting for a Move"
+            last_player_move: "Waiting for a Move",
+            debug_mode: false // Simple flag to toggle debug messages in console and footer.
         };
     }
 
@@ -31,7 +30,13 @@ class MainComponentContainer extends Component
         this.setState({
             last_player_move: player_move
         });
-        if (this.DEBUG) console.log(player_move);
+        if (this.state.debug_mode) console.log(player_move);
+    };
+
+    // Helper function to toggle debug mode. This callback will be used from bottom Nav to lift up to parent state
+    toggle_debug_mode = (new_mode) => {
+        console.log(`Parent debug mode changed to ${new_mode}`);
+        this.setState({debug_mode: new_mode})
     };
 
     // Render the demo app container and all the child components within.
@@ -39,17 +44,18 @@ class MainComponentContainer extends Component
     // of breaking down the application layout
     render()
     {
+        // Toggle border on if in debug mode so student can see component grouping(s)
         return (
-            <div className={"container"}>
+            <div className={this.state.debug_mode ? "container red_border" : "container"}>
                 <div className="grid_container">
-                    <TopNav/>
+                    <TopNav debug_mode={this.state.debug_mode}/>
                     <ScoreBoard boardTitle={this.state.the_name_of_the_game}
-                                lastPlayerMove={this.state.last_player_move}/>
+                                lastPlayerMove={this.state.last_player_move} debug_mode={this.state.debug_mode}/>
                     <Player className={'the_thing_on_the_left'} player_name={this.state.player_one_name}
-                            callback_if_your_btn_clicked={this.somebody_clicked_something}/>
+                            callback_if_your_btn_clicked={this.somebody_clicked_something} debug_mode={this.state.debug_mode}/>
                     <Player className={'the_thing_on_the_right'} player_name={this.state.player_two_name}
-                            callback_if_your_btn_clicked={this.somebody_clicked_something}/>
-                    <BtmNav/>
+                            callback_if_your_btn_clicked={this.somebody_clicked_something} debug_mode={this.state.debug_mode}/>
+                    <BtmNav debug_mode={this.state.debug_mode} callback_when_debug_mode_toggled={this.toggle_debug_mode}/>
                 </div>
             </div>
         );

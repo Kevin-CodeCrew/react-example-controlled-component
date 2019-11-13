@@ -7,7 +7,7 @@ class TopNav extends Component
     render()
     {
         return (
-            <div className="TopNav">
+            <div className={this.props.debug_mode ? "TopNav purple_border" : "TopNav"}>
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/">News</a></li>

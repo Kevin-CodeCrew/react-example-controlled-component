@@ -6,15 +6,14 @@ import React, {Component} from 'react';
 class Player extends Component
 {
 
-    DEBUG = false; // Simple flag to toggle debug messages in console. Should really pass down as a prop from parent
-
     // Construct the component and setup state we will use to control the text input component
     constructor(props)
     {
         super(props);
         this.state = {
             name: this.props.player_name,
-            custom_move: ''
+            custom_move: '',
+            debug_mode: this.props.debug_mode
         }
     }
 
@@ -26,7 +25,10 @@ class Player extends Component
         // Since this event happens only when the user click on of the buttons,  when this fires,
         // we lift the text value from the button they clicked as the 'last player move' to update shared state
         // in the parent.
-        if (this.DEBUG) console.log(this.state.name);
+        if (this.state.debug_mode)
+        {
+            console.log(this.state.name);
+        }
         this.props.callback_if_your_btn_clicked(this.state.name, `did a ${ev.target.value}`);
     };
 
@@ -37,11 +39,17 @@ class Player extends Component
     on_submit = (ev) =>
     {
         ev.preventDefault();
-        if (this.DEBUG) console.log(`The player move value is ${ev.target.value}`);
+        if (this.state.debug_mode)
+        {
+            console.log(`The player move value is ${ev.target.value}`);
+        }
         if (this.state.custom_move !== '' && this.state.custom_move !== undefined)
         {
             this.props.callback_if_your_btn_clicked(this.state.name, `said, "${this.state.custom_move}"`);
-            if (this.DEBUG) console.log(`Submit! ${this.state.custom_move}`);
+            if (this.state.debug_mode)
+            {
+                console.log(`Submit! ${this.state.custom_move}`);
+            }
             this.setState({custom_move: ''});
         }
         else
@@ -53,11 +61,17 @@ class Player extends Component
     // With a controlled component we update the value we are keeping in state each time a new character typed into text field of form
     on_change = (ev) =>
     {
-        if (this.DEBUG) console.log(`The change value is ${ev.target.value}`);
+        if (this.state.debug_mode)
+        {
+            console.log(`The change value is ${ev.target.value}`);
+        }
         this.setState({
             custom_move: ev.target.value
         });
-        if (this.DEBUG) console.log(this.state.custom_move);
+        if (this.state.debug_mode)
+        {
+            console.log(this.state.custom_move);
+        }
         ev.preventDefault();
     };
 
@@ -67,8 +81,10 @@ class Player extends Component
     // which allows us to 'control' the form as a whole as well.
     render()
     {
+        // Toggle border on if in debug mode so student can see component grouping(s)
         return (
-            <div className="thing"><p>{this.props.player_name}</p>
+            <div className= {this.props.debug_mode ? "thing blue_border" : "thing"}>
+                <p>{this.props.player_name}</p>
                 <button type="button" className="btn btn-sm btn-block btn-primary" value={'Yell'}
                         onClick={this.something_was_clicked}>Yell
                 </button>
@@ -80,7 +96,8 @@ class Player extends Component
                 </button>
                 <form className="form-inline" onSubmit={this.on_submit}>
                     <div className="form-group mx-sm-3 mb-2">
-                        <input type="text" value={this.state.custom_move} className="form-control" onChange={this.on_change} id="what_to_say"
+                        <input type="text" value={this.state.custom_move} className="form-control"
+                               onChange={this.on_change} id="what_to_say"
                                placeholder="say something..."/>
                     </div>
                     <button type="submit" className="btn btn-primary mb-2">Do iT!</button>

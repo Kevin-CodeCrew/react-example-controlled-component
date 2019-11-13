@@ -8,6 +8,8 @@ import Player from "./Player";
 // all child components.
 class MainComponentContainer extends Component
 {
+    DEBUG = false; // Simple flag to toggle debug messages in console. Should really pass down as a prop to child components
+
     constructor(props)
     {
         super(props);
@@ -29,7 +31,7 @@ class MainComponentContainer extends Component
         this.setState({
             last_player_move: player_move
         });
-        console.log(player_move);
+        if (this.DEBUG) console.log(player_move);
     };
 
     // Render the demo app container and all the child components within.

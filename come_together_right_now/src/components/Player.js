@@ -6,6 +6,8 @@ import React, {Component} from 'react';
 class Player extends Component
 {
 
+    DEBUG = false; // Simple flag to toggle debug messages in console. Should really pass down as a prop from parent
+
     // Construct the component and setup state we will use to control the text input component
     constructor(props)
     {
@@ -21,19 +23,25 @@ class Player extends Component
     something_was_clicked = (ev) =>
     {
         // Hit up the callback function and give them the updated info
-        console.log(this.state.name);
+        // Since this event happens only when the user click on of the buttons,  when this fires,
+        // we lift the text value from the button they clicked as the 'last player move' to update shared state
+        // in the parent.
+        if (this.DEBUG) console.log(this.state.name);
         this.props.callback_if_your_btn_clicked(this.state.name, `did a ${ev.target.value}`);
     };
 
     // handle submission of the form which allows us to 'control' the form as a whole.
+    // Since this event happens only when the user typed in a 'custom move' when this fires,
+    // we lift the'custom move' text they entered as the 'last player move' to update shared state
+    // in the parent.
     on_submit = (ev) =>
     {
         ev.preventDefault();
-        console.log(`The player move value is ${ev.target.value}`);
+        if (this.DEBUG) console.log(`The player move value is ${ev.target.value}`);
         if (this.state.custom_move !== '' && this.state.custom_move !== undefined)
         {
             this.props.callback_if_your_btn_clicked(this.state.name, `said, "${this.state.custom_move}"`);
-            console.log(`Submit! ${this.state.custom_move}`);
+            if (this.DEBUG) console.log(`Submit! ${this.state.custom_move}`);
             this.setState({custom_move: ''});
         }
         else
@@ -45,11 +53,11 @@ class Player extends Component
     // With a controlled component we update the value we are keeping in state each time a new character typed into text field of form
     on_change = (ev) =>
     {
-        console.log(`The change value is ${ev.target.value}`);
+        if (this.DEBUG) console.log(`The change value is ${ev.target.value}`);
         this.setState({
             custom_move: ev.target.value
         });
-        console.log(this.state.custom_move);
+        if (this.DEBUG) console.log(this.state.custom_move);
         ev.preventDefault();
     };
 

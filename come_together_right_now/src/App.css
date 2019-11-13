@@ -101,26 +101,26 @@ form {
 }
 
 .red_border {
-  border: red 2px solid;
+  border: red 3px solid;
   padding: 5px;
 }
 
 .blue_border {
-  border: blue 2px solid;
+  border: blue 3px solid;
   padding: 5px;
 }
 
 .green_border {
-  border: green 2px solid;
+  border: green 3px solid;
   padding: 5px;
 }
 
 .pink_border {
-  border: #ff9818 2px solid;
+  border: #ff9818 3px solid;
   padding: 5px;
 }
 
 .purple_border {
-  border: purple 2px solid;
+  border: purple 3px solid;
   padding: 5px;
 }

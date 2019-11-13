@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+// Stubbed out navigation component that actually does nothing (links not live)
+// Just an example of breaking down the application layout
 class TopNav extends Component
 {
     render()

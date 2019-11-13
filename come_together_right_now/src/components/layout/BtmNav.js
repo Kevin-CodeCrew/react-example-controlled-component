@@ -46,7 +46,7 @@ class BtmNav extends Component
         ;
 
         // Build bottom nav text based on if debug mode active
-        let btm_nav_content = this.state.debug_mode ? debug_el_content:<p>DEBUG is Off</p>
+        let btm_nav_content = this.state.debug_mode ? debug_el_content:<p>Turn DEBUG on to get console logs and to highlight component hierarchy...</p>
         return (
             <div className={this.state.debug_mode ? "BottomNav pink_border" : "BottomNav"}>
                 <label>

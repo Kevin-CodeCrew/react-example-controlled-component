@@ -14,11 +14,11 @@ class MainComponentContainer extends Component
         // Here's all the prop values we pass down to child components (not including callback functions). Since these don't change
         // in this demo so really didn't have to keep these around in state. Just here as an example.
         this.state = {
-            the_name_of_the_game: "Top of the World Ma!",
-            player_one_name: "Left Player",
-            player_two_name: "Right Player",
-            last_player_move: "Waiting for a Move",
-            debug_mode: false // Simple flag to toggle debug messages in console and footer.
+            the_name_of_the_game: "Top of the World Ma!", // whatever title u want
+            player_one_name: "Left Player", // what to name one of the players
+            player_two_name: "Right Player", // what to name the other player
+            last_player_move: "Waiting for a Move", // start with move status as none
+            debug_mode: false // Simple flag to toggle debug messages in console and footer
         };
     }
 
